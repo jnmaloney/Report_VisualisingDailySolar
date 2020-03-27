@@ -1,0 +1,179 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\bibliographystyle{acm}
+\usepackage{graphicx} 
+\usepackage{rotating}
+
+\usepackage{setspace}
+
+\renewcommand{\baselinestretch}{1.5} 
+
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
+
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\begin{center}
+COSC7502 \\
+Joshua Maloney - s40107464 \\
+Mashhuda Glencross - Supervisor \\
+\Large\textbf{Visualising Daily Solar Supply} \\
+Project Thesis \\
+\end{center}
+
+
+\toccontents
+
+% Abstract
+
+\section{Introduction}
+
+% What is it
+Visualising Daily Solar Supply has produced the product OpenSolar. OpenSolar is a data processing and visualisation system. There are a number of dedicated applications as part of the system.
+
+% What does it do
+OpenSolar gathers daily data and calculates the PV power generated in the previous day.
+
+OpenSolar can visualise solar power on a national scale, as well as zoom in to smaller, more focused geographic areas.
+
+% Why is it so good
+How much solar power is generated per day nationally? This question is hard to answer and before OpenSolar, there was no estimate of such a value to be found.
+
+OpenSolar answers the question of how much power is being generated daily, as well as provides estimates on state, territory and postcode level.
+
+OpenSolar increases the understandability of the data by presenting it in a visually familiar way, using 3D maps to display recognisable locations.
+
+OpenSolar increasses ease of access to data by making the system available to users by a web browser, which is standard for modern devices including computers, tablets and phones.
+
+OpenSolar uses existing data services to make its calculations. This leverages existing sources to create new information.
+
+\subsection{Nomenclature}
+
+\textbf{Suburb} - Throughout this thesis I will talk about suburbs, towns and localities. Although the smallest geographical region that I will consider is called a meshblock (see below), this only occurs during data processing and is not accessible to the end user. The end users will see data amalgamated into ``postcodes'', which is loosely defined as a postal region (POA). Whenever I say ``suburb'', this applies equally to suburbs, towns and postal regions.  I will generally use the word suburb for readability.
+
+\section{Background}
+
+% Why Solar?
+Currently there is no easy answer to the question: how much solar power is produced in Australia each day? We aim to use available data sources to estimate a reasonable number for Australia's daily solar supply. 
+
+% What about 3D Visualisation?
+The goal of the project is to apply 3D visualisation to solar data. Specifially we would like to explore daily solar supply.
+
+% So how did you get to visualising it in a browser?
+There are already some browser based solutions for exporing climate data and PV statistics. This project aims to emphasis solar supply on a much more local scale, by visualising suburb-sized localities. The scale of solar supply can be shown for a neighbourhood, and also these are collected together to show total supply for each state as well as the national solar supply. 
+
+Browser support is important to remain accessible to a reasonable amount of devices. Because the technologies that we are using are standardised, we can expect compatablity with any device currently capable of running a web browser. 
+
+As a developer, these standards offer good performance as well as powerful 3D graphics capabilities.
+
+% What source data did you know you needed?
+The final structure of the application is a result of the format of the data, in order to make the processing possible.
+
+Source data from APVI was already divided into postcodes.
+
+Maps and elevation are available as PNG.
+
+% What source data did you find out you also needed?
+Source data summarising the daily solar irradiance is available from BOM. The data covers all of Australia with a lat-lon grid. 
+
+The summary is provided as a .Z file, this was unexpected and not able to be processed without tools. The tools then required an environment to run, and the envoronment needed to be hosted such that it could execute on a daily schedule. The simple need to unzip a file had extensive imacts on the very design of this application.
+
+% Making preperation to develop the secret formula
+
+% Coding process for the visualisation
+
+% Container process for the estimation
+
+% Centralising by Github
+
+\section{Project Design}
+
+% Kind of building and elaborating on the background
+
+% Building the container
+\subsection{Designing the processing phase}
+The BOM data is provided in a .Z file, and it turned out the only practical way to decompress .Z files is with gzip. Using gzip would require a Linux command line. So a container was a practical solution to this small detail.
+
+Zip in Python didn't work. 
+
+A Linux was needed because I had to invoke gz to actually read the file data. 
+
+A container allowed Python sctipting as well as accessing shell commands. I could then unzip the file, do some data processing, then create a processed data file set which could be uploaded to the visualisation.
+
+
+\subsection{Designing the visualisation}
+
+Initially I wanted to have a site that could access data from an external service, like one of many available cloud platforms. This seemed convenient because cloud platforms could also execute some Python scripts and do the processing and data hosting all in the same place. As well as the processing not being sufficient, there would be problems with cross site domain access, and it was not efficient as a simple solution that could just access the files that were needed.
+
+A more suitable approach was to use a visualisation as a static website using the existing framework provided by github pages. The data files themselves can be updated daily by the processing app, which does so with its own github account.
+
+The static files are then read directly by the website.
+
+\subsection{Explain the parts of the project}
+
+\subsection{Explain limitations of why it was caused to be that way}
+
+\section{Project Parts and Subprojects?}
+
+\subsection{What is a postcode anyway?}
+
+Postcodes are generally dictated by Australia Post, there is not a specific boundary to any postal code.
+
+A postcode refers to what the ABS would call a postal area (POA). A POA is a collection of meshblocks that are assigned the same postcode. 
+
+So what is a meshblock?
+
+A meshblock (mb) is a geographical region which is provided with a uniquely identifying code. A meshblock is the smallest region considered my the ABS. Meshblocks vary in the size of the geographical area, but are divided in such a way that approximately 50 residents live in any given meshblock. This designation is small enough to be useful for fine-grained geographical systems, but large enough to be considered anonymising. 
+
+We can gather data from the ABS that identifies all meshblocks in Australia, together with the geographical area, postcode and locality (town or suburb) name.
+
+This data is essential for creating a user interface to our application. We must allow the user to search for a location by name, and provide a result. We therefore need the postcode of that suburb name, as well as the location of the suburb.
+
+The ABS provides CSV data as well as a GPKG. To access the data in a GPKG, we need to use specialised software. I have chosen to use GDAL to access the data and use a Python script to process everything that I need. 
+
+The goal of the script is to scan through every meshblock in the GPKG file, and figure out the geographic location. This is simplified by taking the AABB only. The final goal of this process is to have a centre point which coresponds to each suburb.
+
+After this processing phase, I should be able to search for a suburb by name, and tell you the postcode as well as a (lon, lat) pair giving the approximate centre point.
+
+This will allow the user to type the name of the suburb, or it's postcode, and have the application zoom into that area with some accuracy. 
+
+\subsection{Building the Postcode Data Sets}
+
+\subsubsection{visualisation data from the GPKG}
+
+One important thing is to know where a POA is.
+
+We can find this by exploring the shapes in the GPKG. The extents of each feature give a simple way to keep track of the general area where you would find that suburb.
+
+This allows us to zoom in to any location by postcode.
+
+But what if we want to find a location by name?
+
+The solution to this problem is to generate a map of names to postcodes. We can also create this map from the GPKG. Although we have to be careful because some postcodes have more than one name, for example 4000 is the postcode of Spring Hill and Brisbane City. We can use this name:postcode map to find out the postcode of an area by matching a partial string to the names of all suburbs.
+
+From this system we can go from a name or partial name, to a key matching string which gives a postcode and then the longitute and latitude of the POA.
+
+\subsubsection{visualisation data for solar}
+
+By having the postcode and being able to expore it easily allows further visualisation of the solar data.
+
+We can calculate daily solar supply because the installation data is clustered by each postcode.
+
+Using the postcode data and geographic location, we can mix with the latest daily solar irradiance map to find the expected supply of solar energy. The location can be read from the processing of shapes that we did in the previous step.
+
+The resultant data is tabulated into postcodes and supply amounts, then it is uploaded to the file host, and the visualisation can read the data from static files in real time.
+ 
+\subsubsection{processing the solar data}
+
+
+
+
+
+%\bibliography{bb}
+
+\end{document}

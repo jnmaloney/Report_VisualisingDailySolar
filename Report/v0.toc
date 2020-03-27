@@ -1,0 +1,14 @@
+\contentsline {section}{Introduction}{1}
+\contentsline {subsection}{Nomenclature}{2}
+\contentsline {section}{Background}{2}
+\contentsline {section}{Project Design}{4}
+\contentsline {subsection}{Designing the processing phase}{4}
+\contentsline {subsection}{Designing the visualisation}{4}
+\contentsline {subsection}{Explain the parts of the project}{5}
+\contentsline {subsection}{Explain limitations of why it was caused to be that way}{5}
+\contentsline {section}{Project Parts and Subprojects?}{5}
+\contentsline {subsection}{What is a postcode anyway?}{5}
+\contentsline {subsection}{Building the Postcode Data Sets}{6}
+\contentsline {subsubsection}{visualisation data from the GPKG}{6}
+\contentsline {subsubsection}{visualisation data for solar}{7}
+\contentsline {subsubsection}{processing the solar data}{7}
