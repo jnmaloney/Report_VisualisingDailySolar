@@ -1,14 +1,35 @@
-\contentsline {section}{Introduction}{1}
-\contentsline {subsection}{Nomenclature}{2}
-\contentsline {section}{Background}{2}
-\contentsline {section}{Project Design}{4}
-\contentsline {subsection}{Designing the processing phase}{4}
-\contentsline {subsection}{Designing the visualisation}{4}
-\contentsline {subsection}{Explain the parts of the project}{5}
-\contentsline {subsection}{Explain limitations of why it was caused to be that way}{5}
-\contentsline {section}{Project Parts and Subprojects?}{5}
-\contentsline {subsection}{What is a postcode anyway?}{5}
-\contentsline {subsection}{Building the Postcode Data Sets}{6}
-\contentsline {subsubsection}{visualisation data from the GPKG}{6}
-\contentsline {subsubsection}{visualisation data for solar}{7}
-\contentsline {subsubsection}{processing the solar data}{7}
+\contentsline {section}{Abstract}{2}
+\contentsline {section}{Introduction}{2}
+\contentsline {subsection}{All acronyms}{3}
+\contentsline {subsubsection}{Nomenclature - Geoographic terms}{3}
+\contentsline {section}{Background}{4}
+\contentsline {subsection}{Solar Supply}{4}
+\contentsline {subsection}{Existing tools}{5}
+\contentsline {subsection}{Existing data that we want to work with}{5}
+\contentsline {subsection}{Technology that can support our goals}{5}
+\contentsline {subsection}{Final thoughts on project given background}{5}
+\contentsline {section}{Project Overview}{5}
+\contentsline {section}{Project Design - Initial Planning}{7}
+\contentsline {section}{Project Design - Replanning and Focus Features}{7}
+\contentsline {section}{Project Design - Final Implementation}{7}
+\contentsline {subsection}{Designing the processing phase}{7}
+\contentsline {subsection}{Designing the visualisation}{7}
+\contentsline {subsection}{Explain the parts of the project}{8}
+\contentsline {subsection}{Explain limitations of why it was caused to be that way}{9}
+\contentsline {section}{Project Parts and Subprojects?}{9}
+\contentsline {subsection}{Project Tools and Work Environment}{9}
+\contentsline {subsection}{What is a postcode anyway?}{9}
+\contentsline {subsection}{Building the Postcode Data Sets}{10}
+\contentsline {subsubsection}{visualisation data from the GPKG}{10}
+\contentsline {subsubsection}{visualisation data for solar}{11}
+\contentsline {subsubsection}{processing the solar data}{11}
+\contentsline {subsubsection}{Co-ordinate systems}{11}
+\contentsline {subsubsection}{Building terrain for the visualisation}{12}
+\contentsline {section}{Discussion}{13}
+\contentsline {subsection}{Usefulness and exploration of the data}{13}
+\contentsline {subsubsection}{Database vs visualisation}{13}
+\contentsline {subsection}{PV networks}{13}
+\contentsline {subsubsection}{IoT integration}{13}
+\contentsline {subsubsection}{Blockchain PV trading}{13}
+\contentsline {subsubsection}{Smart Contracts}{13}
+\contentsline {subsubsection}{WASM in Visualisation}{13}

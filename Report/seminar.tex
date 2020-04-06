@@ -56,6 +56,17 @@ The University of Queensland, Qld., 4072, Australia \\
 
 \section{Introduction}
 
+OpenSolar is designed to show daily solar supply with 3D visualisation. The data is sourced from APVI, BOM, ABS, OSM, OSMBuildings. The data to be visualised consists of solar energy produced by all systems calculated and updated daily, as well as regional coverage of small PV installations.
+
+The visualisation is constructed with OpenGL ES and c++. A compiler chain is used that outputs to a WASM binary. A website can load the application.
+
+To obtain the data, we use an offline process to calculate the source each day, and provide the processed data files directly to the site.
+The formula was developed with obesrvations from PVOutput and BOM.
+
+Data for solar supply can be calcluated for each postcode region, and is also grouped by state and a total supply is calculated for all regions in Australia. Before this tool, it was not possible to easily find the amount of solar energy generated daily. Now this data is available and can easily be explored by the accompanying visualisation.
+
+Zooming into the visualisation shows a 3D representation of the local area with buildings and elevation maps. 
+
 % \message{The column width is: \the\columnwidth}
 %The column width is: \the\columnwidth
 
@@ -147,6 +158,12 @@ Representing the data in the geometry
 \includegraphics[scale=0.17]{design1.eps}
 
 \section{Conclusion}
+
+Using this visualisation we can show PV coverage rates and pinpoint individual systems and their immediate output. We can show the projected daily output for postcode regions, and collect the data into state and country sized regions. We can display data that is generated daily using the previous day's latest solar data. 
+
+We explore how the concept of a "virtual twin" city could use virtual space to integrate a number of data services.
+
+We explore how the tool could be used to display relevant solar data.
 
 \section*{Acknowledgement}
 
