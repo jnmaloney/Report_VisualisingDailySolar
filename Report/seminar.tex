@@ -56,38 +56,55 @@ The University of Queensland, Qld., 4072, Australia \\
 
 \section{Introduction}
 
-OpenSolar is designed to show daily solar supply with 3D visualisation. The data is sourced from APVI, BOM, ABS, OSM, OSMBuildings. The data to be visualised consists of solar energy produced by all systems calculated and updated daily, as well as regional coverage of small PV installations.
+\subsection{Broad}
 
-The visualisation is constructed with OpenGL ES and c++. A compiler chain is used that outputs to a WASM binary. A website can load the application.
+This project describes the design and implementation of OpenSolar, including building the product system, the theory behind it's estimates and ways that it can be used. 
 
-To obtain the data, we use an offline process to calculate the source each day, and provide the processed data files directly to the site.
-The formula was developed with obesrvations from PVOutput and BOM.
+The main part of OpenSolar is a visualisation that displays a 3D visualisation of photovoltaic (PV) sytems for any postcode region in Australia. The other major part of OpenSolar is a data processing backend that formats existing data and also estimates the daily power output.
 
-Data for solar supply can be calcluated for each postcode region, and is also grouped by state and a total supply is calculated for all regions in Australia. Before this tool, it was not possible to easily find the amount of solar energy generated daily. Now this data is available and can easily be explored by the accompanying visualisation.
+These values make it easy to find data on daily PV output. We provide data on PV sytem installations per residence, total capacity and daily power output for regions as small as a postcode area, and also display state and national totals.
 
-Zooming into the visualisation shows a 3D representation of the local area with buildings and elevation maps. 
+\subsection{Specific}
+
+The visualisation is made in WebGL and WebAssembly, because these technologies are available on all modern devices. Anyone can access the data and visualisation by using a web browser. 
+
+The data processing is calculated daily, using a docker container with a timed script to execute the process. 
+
+The two parts need to communicate, so that the daily data can be accessed by the visualisation. We host the visualisation on Github Pages, which loads a static page from a git repository. We give the docker container access to the same git repository, where it uploads the formatted data files.
+
+%OpenSolar is designed to show daily solar supply with 3D visualisation. The data is sourced from APVI, BOM, ABS, OSM, OSMBuildings. The data to be visualised consists of solar energy produced by all systems calculated and updated daily, as well as regional coverage of small PV installations.
+
+%The visualisation is constructed with OpenGL ES and c++. A compiler chain is used that outputs to a WASM binary. A website can load the application.
+
+%To obtain the data, we use an offline process to calculate the source each day, and provide the processed data files directly to the site.
+
+%The formula was developed with obesrvations from PVOutput and BOM.
+
+%Data for solar supply can be calcluated for each postcode region, and is also grouped by state and a total supply is calculated for all regions in Australia. Before this tool, it was not possible to easily find the amount of solar energy generated daily. Now this data is available and can easily be explored by the accompanying visualisation.
+
+%Zooming into the visualisation shows a 3D representation of the local area with buildings and elevation maps. 
 
 % \message{The column width is: \the\columnwidth}
 %The column width is: \the\columnwidth
 
 % What is it
-Visualising Daily Solar Supply has produced the product OpenSolar. OpenSolar is a data processing and visualisation system. There are a number of dedicated applications as part of the system.
+%Visualising Daily Solar Supply has produced the product OpenSolar. OpenSolar is a data processing and visualisation system. There are a number of dedicated applications as part of the system.
 
 % What does it do
-OpenSolar gathers daily data and calculates the PV power generated in the previous day.
+%OpenSolar gathers daily data and calculates the PV power generated in the previous day.
 
-OpenSolar can visualise solar power on a national scale, as well as zoom in to smaller, more focused geographic areas.
+%OpenSolar can visualise solar power on a national scale, as well as zoom in to smaller, more focused geographic areas.
 
 % Why is it so good
-How much solar power is generated per day nationally? This question is hard to answer and before OpenSolar, there was no estimate of such a value to be found.
+%How much solar power is generated per day nationally? This question is hard to answer and before OpenSolar, there was no estimate of such a value to be found.
 
-OpenSolar answers the question of how much power is being generated daily, as well as provides estimates on state, territory and postcode level.
+%OpenSolar answers the question of how much power is being generated daily, as well as provides estimates on state, territory and postcode level.
 
-OpenSolar increases the understandability of the data by presenting it in a visually familiar way, using 3D maps to display recognisable locations.
+%OpenSolar increases the understandability of the data by presenting it in a visually familiar way, using 3D maps to display recognisable locations.
 
-OpenSolar increasses ease of access to data by making the system available to users by a web browser, which is standard for modern devices including computers, tablets and phones.
+%OpenSolar increasses ease of access to data by making the system available to users by a web browser, which is standard for modern devices including computers, tablets and phones.
 
-OpenSolar uses existing data services to make its calculations. This leverages existing sources to create new information.
+%OpenSolar uses existing data services to make its calculations. This leverages existing sources to create new information.
 
 \includegraphics[scale=0.17]{design1.eps}
 
