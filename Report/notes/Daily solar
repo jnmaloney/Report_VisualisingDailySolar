@@ -1,0 +1,113 @@
+Daily Solar
+
+Start with all AU
+ - Daily output (MW-h)
+ - Current output (MW)
+ - Targets ? 2020 Emmision target ?
+ - (Ability to search for location by name)
+ - (Ability to zoom-in one level) 
+
+
+Categorise by state/territory
+ - 1-digit postcode?
+ - Daily / Current / Target
+
+
+[Zoom In]
+Categorise by 2-digit postcode
+
+
+
+[Individual units]
+Show location and capacity/output of individually tracked units.
+Overlay on map.
+
+
+
+
+Two data types:
+  Pins
+  Regions
+
+
+
+Notes
+
+Solcast World PV Power API - "for a large number of sites... don't need upload data" Starts at 370USD$
+
+Test sites? Least data req'd for accurate prediction.
+
+Look at S2S4E decision support tool.
+-> ECMWF data (European)
+
+
+Go to BOM
+http://www.bom.gov.au/jsp/awap/solar/index.jsp
+-> Latest solar irradiance map
+http://www.bom.gov.au/web03/ncc/www/awap/solar/solarave/daily/grid/0.05/latest.grid.Z
+
+
+postcodes_1618.csv
+from APVI
+shows capacity of each 4-digit postcode
+pot_kw or pot_gwh
+
+*(Actually check the Clean Energy Regulator http://www.cleanenergyregulator.gov.au/RET/Forms-and-resources/Postcode-data-for-small-scale-installations)
+
+Algorithm...
+For each quad in BOM grid;
+Intersects postcode regions with ABS shapefile;
+then...
+For each postcode;
+Sum contributing irradaince from grid (%)
+(?) Modulate by capacity
+Provide a final estimate per postcode of GWh produced on that day
+
+Meshblocks (!?)
+
+
+Algorithm...
+Shape of each meshblock
+Calculate BBox
+Iterate 'points' on grid
+Each 'point' in shape contributes 1% to the meshblock
+
+
+
+View daily outputs at
+eg
+https://pvoutput.org/outputs.jsp?df=20200118
+
+Daily output / Postcode
+->
+Daily irradiance / Postcode
+
+
+5061,UNLEY,SA
+-34:56:35,-138:36:09
+-34.94306°,-138.6025°
+10.000kW https://pvoutput.org/list.jsp?id=43863&sid=40063
+
+
+From [http://solarenergyfactsblog.com/how-much-solar-energy-is-used-in-the-world/]:
+In 2008, the world used about 474 exajoules, or 132,000 TeraWatt hours worth of energy from all sources.
+
+
+We calculate:
+Total:  46,356,420 kWh
+ACT 424,464 kWh
+NSW 13,710,428 kWh
+QLD 13,977,121 kWh
+NT 127,861 kWh
+SA 6,324,155 kWh
+TAS 535,322 kWh
+VIC 10,098,863 kWh
+WA 1,158,202 kWh
+
+Total:  46,356,420 kWh
+Total:  46,356 GWh
+Total:  46 TWh per day
+
+(About 1/3 of world energy per year) (???)
+
+

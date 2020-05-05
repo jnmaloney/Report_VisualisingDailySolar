@@ -1,0 +1,20 @@
+ = Visualising Daily Solar Supply = 
+
+1. Gather the data.
+What Data is needed? 
+ - Daily solar irradiance (weather)
+ - Solar power capacity (# of systems and power)
+ - Location data 
+
+What is the process?
+ - Gather daily solar irradiance
+ - Use location data to cross-reference solar irradiance and capacity
+ - Estimate total power output
+
+2. Save the processed data to a cenrtalised system
+In a format that we can visualise quickly
+
+3. Visualise the data
+
+
+

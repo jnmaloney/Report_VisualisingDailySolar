@@ -1,0 +1,70 @@
+Visualising Daily Solar Supply
+
+What is daily solar supply?
+> Investigate the data
+> What values are current?
+
+(Why solar)
+
+Significance of daily solar supply
+> Rapid shift and uptake
+> Meeting 2020 targets
+> The effect of weather on daily supply
+
+What is 3D visualisation
+> 3D visualisation is naturally tangible
+> Is an ideal way to represent spatial data
+> Has been successful in the past, in fuels exploration
+
+Why 3D visualisation here
+> Focus on immersion and engagement
+> The data is existing in a virtual world
+> Allow the data to be accessible in context
+
+What are the priorities of the 3D visualisation (Who uses it)
+> Home owner with a PV system can compare their output with local average supply
+> Large energy projects can see data on a wide scale
+> Predict future supply and display for each area
+
+What data sources are useful
+> Geographic: Maps, elevation
+> Weather: Solar irradiance, cloud cover
+> Urban: Postcode-area-supply, capacity
+
+How these data layers might look in a 3D system
+> Mockup of what a virtual world could look like
+
+(Previous Findings)
+> These are two online tools for geographic planning and solar resources
+> Presentation of Planning Tool
+> Presentation of Terria
+
+(Previous Findings)
+> Academic ideas on virtual worlds
+> GML? Level of detail formats...
+
+How we could bring the layers we need into one world?
+> Geographic: Geometry (elevation) and texture (map)
+> Weather: Cloud geometry based on weather data of area
+> Urban: Show features as columns, colouring or billboard time series
+
+A visualisation engine that can handle these types of layers
+> ...
+
+A layer specification that can bring in the input data
+> ...
+
+Processing to do with the data source
+> ...
+
+Towards a final product
+> ...
+
+Integration with other tools
+> ...
+
+Meeting the goals
+> THis will show...
+
+
+

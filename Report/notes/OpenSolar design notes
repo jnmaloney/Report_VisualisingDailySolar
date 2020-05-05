@@ -1,0 +1,9 @@
+The OpenSolar Client
+-> Static-File website/app
+-> HTML5 pages
+-> txt data files are updated daily...
+
+The OpenSolar Process Server
+-> Operates one per day
+-> Calculates daily power (python script)
+-> Uploads result to github (?)

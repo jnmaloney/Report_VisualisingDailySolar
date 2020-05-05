@@ -1,0 +1,19 @@
+Final Touches
+
+-> Landscape model
+    - multi-scale elevation, image, and building layers
+
+-> Geometry
+    - Calculating heightmaps
+    - Building outlines
+    - Building caps
+
+-> Data Vis
+    - Shading the building by %
+    - Showing the daily supply UI
+
+-> Searching and finding
+
+-> Daily Updates
+
+-> Insolation-Supply model
