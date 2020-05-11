@@ -11,6 +11,7 @@
 \usepackage{rotating}
 
 \usepackage{multicol}
+\usepackage{url}
 
 %\setcounter{secnumdepth}{0}
 
@@ -45,32 +46,86 @@ The University of Queensland, Qld., 4072, Australia \\
 
 % Abstract
 \begin{abstract}
+%\textit{
+%   Daily Solar supply is important.
+%   Providing data on daily solar supply is novel.
+%   The data is provided with a 3D interface.
+%   Search through geographical areas.
+%   View the data by visualising in natural ways.
+%  }
 \textit{
-   Daily Solar supply is important.
-   Providing data on daily solar supply is novel.
-   The data is provided with a 3D interface.
-   Search through geographical areas.
-   View the data by visualising in natural ways.
-  }
+	SolarSupplyAu is a system for estimating and visualising the supply from photovoltaic sources each day in Australia. The system builds on existing provisions of data on current and future photovoltaic installations, geographic areas and daily weather. By combining this data, SolarSupplyAu provides an estimate of the energy provided from solar each day, which was not already readily available. SolarSupplyAu also uses 3D rendering techniques to show a visualisation of any suburb in Australia with its calculated daily supply and percentage of photovoltaic system coverage.	
+}
 \end{abstract}
 
 \section{Introduction}
 
-\subsection{Broad}
+Solar supply is important because of goals 2020. We can see that the uptake of solar supply is at its highest rate ever. The amount of spending in solar is significant. 
 
-This project describes the design and implementation of OpenSolar, including building the product system, the theory behind it's estimates and ways that it can be used. 
+Solar supply is provided by photovoltaic (PV) systems. In sunlight, PV systems provide electrical power which is measured in kilowatts (kW). Each day, we can say that a PV system provides an amount of solar energy, which is measured in kilowatt-hours (kWh).
 
-The main part of OpenSolar is a visualisation that displays a 3D visualisation of photovoltaic (PV) sytems for any postcode region in Australia. The other major part of OpenSolar is a data processing backend that formats existing data and also estimates the daily power output.
+We want to better understand some of this data, which is why we will capture it in a visualisation format. To really understand what to visualise, we have to look at the source data. 
 
-These values make it easy to find data on daily PV output. We provide data on PV sytem installations per residence, total capacity and daily power output for regions as small as a postcode area, and also display state and national totals.
+The Australian Photovoltaic Institute (APVI)\cite{apvi} provides a key data set for this project. They have developed PVMap\cite{pvmap} which shows data on current and future installations. Note: the data comes from certified installations, however the actual pv system may be installed within 12 months of certification.
 
-\subsection{Specific}
+This dataset provides postcode data, which means we will also have to provide some mapping capabilities. 
 
-The visualisation is made in WebGL and WebAssembly, because these technologies are available on all modern devices. Anyone can access the data and visualisation by using a web browser. 
+Now that we know the installation size and where it is, we want to find out the daily weather data. The Bureau of Meteorology (BoM) gives daily gridded data sets on solar irradiance and temperature. 
 
-The data processing is calculated daily, using a docker container with a timed script to execute the process. 
+With all this data, we hoped to show some useful information but it was not possible to find a way to calculate solar energy from this. 
 
-The two parts need to communicate, so that the daily data can be accessed by the visualisation. We host the visualisation on Github Pages, which loads a static page from a git repository. We give the docker container access to the same git repository, where it uploads the formatted data files.
+We can look at how PV systems are producing power in real time using the online tool PVOutput\cite{pvoutput}. By studying this data, we can cross reference PV systems daily output with the weather files and produce a model for forecasting the output of other systems. We compute and provide this data which was not otherwise readily available. 
+
+This finally gives us the ability to put a number on the solar energy supply of each postcode area, and sum to total for each state as well as the whole of Australia.
+
+\section{Visualisation Design}
+
+The visualisation is to show the data in a meaninful way, that helps the user find and understand what they are looking for. One of the key design factors is to be user friendly with an easy to use interface. 
+
+Because we are dealing with suburb locations through a very large area, it was important to have ways to search. Findind data on a postcode area should be as simple as typing into a search box.
+
+We used suburb names and postcodes from the ABS. There is a many-to-one association between locality names and postcode areas.
+
+The terrain model is built from OpenStreetMap.
+
+The building models come on top of that. 
+
+The overall display begins at the country level. Initially we can choose to see the state breakdown, or go straight into search.  If we choose the state breakdown, we see each state and territory with its daily supply. At any time the search bar allows a zoomed in view of a single PCA, showing the landscape model and building model with percentage of pv installation, as well as figures for the daily supply for that postcode. 
+
+
+
+\subsection{coding the visualisation}
+
+
+\subsection{bringing the visualisation online}
+
+
+\section{Node Design}
+
+The Node collects daily data, performs the necessary calculations and formatting, finally providing the files that will be input to the visualisation. By doing this every day, the Node ensures that the visualisation will be showing current data.
+
+\subsection{data collection}
+\subsection{data processing}
+\subsection{data delivery}
+\subsection{automating the package (how to run everyday)}
+
+
+
+%\subsection{Broad}
+%
+%This project describes the design and implementation of OpenSolar, including building the product system, the theory behind it's estimates and ways that it can be used. 
+%
+%The main part of OpenSolar is a visualisation that displays a 3D visualisation of photovoltaic (PV) sytems for any postcode region in Australia. The other major part of OpenSolar is a data processing backend that formats existing data and also estimates the daily power output.
+%
+%These values make it easy to find data on daily PV output. We provide data on PV sytem installations per residence, total capacity and daily power output for regions as small as a postcode area, and also display state and national totals.
+%
+%\subsection{Specific}
+%
+%The visualisation is made in WebGL and WebAssembly, because these technologies are available on all modern devices. Anyone can access the data and visualisation by using a web browser. 
+%
+%The data processing is calculated daily, using a docker container with a timed script to execute the process. 
+%
+%The two parts need to communicate, so that the daily data can be accessed by the visualisation. We host the visualisation on Github Pages, which loads a static page from a git repository. We give the docker container access to the same git repository, where it uploads the formatted data files.
 
 %OpenSolar is designed to show daily solar supply with 3D visualisation. The data is sourced from APVI, BOM, ABS, OSM, OSMBuildings. The data to be visualised consists of solar energy produced by all systems calculated and updated daily, as well as regional coverage of small PV installations.
 
@@ -106,7 +161,7 @@ The two parts need to communicate, so that the daily data can be accessed by the
 
 %OpenSolar uses existing data services to make its calculations. This leverages existing sources to create new information.
 
-\includegraphics[scale=0.17]{design1.eps}
+%\includegraphics[scale=0.17]{design1.eps}
 
 \section{Background}
 
@@ -172,7 +227,7 @@ Representing the data in the geometry
 
 \section{Results}
 
-\includegraphics[scale=0.17]{design1.eps}
+%\includegraphics[scale=0.17]{design1.eps}
 
 \section{Conclusion}
 
@@ -182,10 +237,13 @@ We explore how the concept of a "virtual twin" city could use virtual space to i
 
 We explore how the tool could be used to display relevant solar data.
 
+
 \section*{Acknowledgement}
 
+\section*{References}
 
-%\bibliography{bb}
+\bibliography{bib_seminar}
+
 \end{multicols}
 
 \end{document}
